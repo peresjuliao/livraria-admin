@@ -26,7 +26,7 @@ public class EstanteNoBancoDeDados implements Estante {
 	}
 
 	@Override
-	public List<Livro> todoOsLivros() {
+	public List<Livro> todosOsLivros() {
 		return this.dao.todos();
 	}
 

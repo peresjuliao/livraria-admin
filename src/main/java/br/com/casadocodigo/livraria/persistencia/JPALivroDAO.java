@@ -44,10 +44,10 @@ public class JPALivroDAO implements LivroDAO {
 	public Livro buscaPorIsbn(String isbn) {
 		try {
 			return this.manager
-					.createQuery("select l form Livro l where l.isbn = :isbn", Livro.class)
-					.setParameter("isbn", isbn)
+					.createQuery("select l from Livro l where l.isbn = :isbn",
+							Livro.class).setParameter("isbn", isbn)
 					.getSingleResult();
-		} catch(NoResultException e) {
+		} catch (NoResultException e) {
 			return null;
 		}
 	}

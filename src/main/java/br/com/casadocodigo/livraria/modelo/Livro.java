@@ -3,10 +3,11 @@ package br.com.casadocodigo.livraria.modelo;
 import java.math.BigDecimal;
 import java.util.Calendar;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Livro {
@@ -15,12 +16,20 @@ public class Livro {
 	@GeneratedValue
 	private Long id;
 
-	@Column(unique = true)
+	@NotNull(message = "{campo.obrigatorio}")
 	private String isbn;
+	
+	@NotNull(message = "{campo.obrigatorio}")
 	private String titulo;
-	private String descricao;
+	
+	@NotNull(message = "{campo.obrigatorio}")
+    @DecimalMin(value="0.0")
 	private BigDecimal preco;
+	
+	
 	private Calendar dataPublicacao;
+	
+	private String descricao;
 
 	public String getTitulo() {
 		return titulo;
